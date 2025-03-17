@@ -21,7 +21,7 @@ export class LabsComponent {
    disabled = false;
    image = 'https://w3schools.com/howto/img_avatar.png'
    person = signal({
-    name: 'nicolas',
+    name: 'allan',
     age: 18 ,
     avatar: 'https://w3schools.com/howto/img_avatar.png'
    });
@@ -46,6 +46,17 @@ export class LabsComponent {
       }
     })
 
+   }
+
+   changeName(event: Event){
+    const input = event.target as HTMLInputElement;
+    const newValue = input.value
+    this.person.update(prevState => {
+      return {
+        ...prevState,
+        name: newValue
+      }
+    })
    }
 
    keydownHandler(event: KeyboardEvent){
