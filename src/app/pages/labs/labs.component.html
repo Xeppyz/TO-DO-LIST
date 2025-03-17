@@ -12,19 +12,19 @@
 <p>la suma de 3 + 3 es {{ 3 + 3}}</p>
 <p>Hola soy {{name()}} y tengo {{age}} años</p>
 <hr/>
-<img [src]="[person.avatar]" alt="">
-<input type="number" [value]="person.age">
+<img [src]="person().avatar" alt="">
+<input type="number" [value]="person().age">
 <button [disabled]="disabled">Click me </button>
-<p>person: {{person.name    }}</p>
+<p>person: {{person().name}}</p>
 <hr/>
 <button (click)="clickHandler()">Click me</button>
 <button (dblclick)="clickHandler()">double me</button>
 <p>(change)</p>
-<input type="number"[value]="person.age" (change)="changeHandler($event)">
+<input type="number"[value]="person().age" (change)="changeHandler($event)">
 <p>(keydown)</p>
-<input type="text"[value]="person.name" (keydown)="keydownHandler($event)">
+<input type="text"[value]="person().name" (keydown)="keydownHandler($event)">
 <p>(keydown + shift + t)</p>
-<input type="text"[value]="person.name" (keydown.shift.t)="clickHandler()">
+<input type="text"[value]="person().name" (keydown.shift.t)="clickHandler()">
 <hr/>
 
 <ul>
@@ -33,7 +33,17 @@
       {{i}}  {{task}}
     </li>
 </ul>   
+
+
 <h1>Signals</h1>
 <input type="text"[value]="name()" (change)="changeHandler($event)">
 <p>Name: {{name()}}</p>
+<hr/>
+<input type="number" [value]="person().age" (change)="changeAge($event)">
+<div *ngIf="person().name === 'nicolas' && person().age>18; else elseBlock">
+    I'm Nicolas and I am over 18
+</div>
+<ng-template #elseBlock>
+    I'm Nicolas and I am under 18
+</ng-template>
 </div>
